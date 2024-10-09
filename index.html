@@ -6,20 +6,33 @@
   <title>Verde Proxy</title>
   <link rel="icon" type="image/x-icon" href="favicon.png">
   <style>
+    html {
+      --bg: #181818;
+      --text: #ffffff;
+      --title: #e0e0e0;
+      --nav-hover: #61ce70;
+      --input: #282828;
+      --input-placeholder: #888888;
+      --input-submit: #424242;
+    }
+
+    .light-theme {
+      --bg: #f0f0f0;
+      --text: #000;
+      --title: #292929;
+      --input: #d8d8d8;
+      --input-submit: #bdbdbd;
+    }
+    
     body {
-      background-color: #181818;
-      color: #fff;
+      background-color: var(--bg);
+      color: var(--text);
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
       overflow: hidden;
       transition: background-color 0.3s, color 0.3s;
       cursor: url('cursor.svg'), default;
-    }
-
-    .light-theme {
-      background-color: #f0f0f0;
-      color: #000;
     }
 
     .container {
@@ -34,6 +47,7 @@
 
     h1 {
       font-size: 4em;
+      color: var(--title);
       margin-bottom: 20px;
       text-transform: uppercase;
       opacity: 0;
@@ -57,7 +71,7 @@
     }
 
     .nav-item:hover {
-      color: #61ce70;
+      color: var(--nav-hover);
       transform: scale(1.1);
       opacity: 1;
     }
@@ -76,7 +90,7 @@
     .search {
       display: flex;
       align-items: center;
-      background-color: #282828;
+      background-color: var(--input);
       border-radius: 5px;
       padding: 10px;
       width: 100%;
@@ -87,7 +101,7 @@
     .search input {
       background-color: transparent;
       border: none;
-      color: #fff;
+      color: var(--text);
       font-size: 16px;
       padding: 10px;
       width: 100%;
@@ -95,7 +109,7 @@
     }
 
     .search input::placeholder {
-      color: #888;
+      color: var(--input-placeholder);
       opacity: 1;
       transition: opacity 0.3s ease;
     }
@@ -106,10 +120,10 @@
     }
 
     .search button {
-      background-color: #424242;
+      background-color: var(--input-submit);
       border: none;
       border-radius: 5px;
-      color: #fff;
+      color: var(--text);
       font-size: 16px;
       padding: 10px 15px;
       margin-left: 10px;
@@ -272,8 +286,8 @@
 
       const themeToggle = document.getElementById('themeToggle');
       themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('light-theme');
-        localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+        document.documentElement.classList.toggle('light-theme');
+        localStorage.setItem('theme', document.documentElement.classList.contains('light-theme') ? 'light' : 'dark');
       });
 
       document.body.classList.toggle('light-theme', localStorage.getItem('theme') === 'light');
