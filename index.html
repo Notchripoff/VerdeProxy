@@ -330,11 +330,13 @@
         section.classList.add('active');
       });
 
-      function setTheme(name) {
-        document.documentElement.classList.remove("light-theme");
-        document.documentElement.classList.remove("amethyst-theme");
-        document.documentElement.classList.add(name + "-theme");
-        localStorage.setItem("theme", name);
+      function switchTheme(theme) {
+        const themes = ['light', 'amethyst'];
+        const body = document.body;
+      
+        themes.forEach(t => body.classList.remove(`${t}-theme`));
+        body.classList.add(`${theme}-theme`);
+        localStorage.setItem("theme", theme);
       }
 
       document.documentElement.classList.remove("light-theme");
