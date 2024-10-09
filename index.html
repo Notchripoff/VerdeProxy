@@ -290,7 +290,7 @@
         localStorage.setItem('theme', document.documentElement.classList.contains('light-theme') ? 'light' : 'dark');
       });
 
-      document.body.classList.toggle('light-theme', localStorage.getItem('theme') === 'light');
+      document.documentElement.classList.toggle('light-theme', localStorage.getItem('theme') === 'light');
 
       const madeByButton = document.getElementById('madeByButton');
       const madeByModal = document.getElementById('madeByModal');
