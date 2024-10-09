@@ -272,9 +272,9 @@
           <span>Toggle Theme</span>
         </div>
         <div class="dropdown-content">
-          <button onclick="setTheme('dark')">Dark Theme</button>
-          <button onclick="setTheme('light')">Light Theme</button>
-          <button onclick="setTheme('amethyst')">Amethyst</button>
+          <button onclick="switchTheme('dark')">Dark Theme</button>
+          <button onclick="switchTheme('light')">Light Theme</button>
+          <button onclick="switchTheme('amethyst')">Amethyst</button>
         </div>
       </div>
     </nav>
@@ -331,17 +331,28 @@
       });
 
       function switchTheme(theme) {
-        const themes = ['light', 'amethyst'];
+        const themes = ['light', 'amethyst', 'dark']; // Include 'dark' here
         const body = document.body;
-      
+    
+        // Remove all specified themes
         themes.forEach(t => body.classList.remove(`${t}-theme`));
+        
+        // Add the selected theme
         body.classList.add(`${theme}-theme`);
+        
+        // Save the theme to localStorage
         localStorage.setItem("theme", theme);
       }
-
-      document.documentElement.classList.remove("light-theme");
-      document.documentElement.classList.remove("amethyst-theme");
-      document.documentElement.classList.add(localStorage.getItem("theme") + "-theme");
+      
+      // Apply the theme on page load
+      document.addEventListener('DOMContentLoaded', () => {
+          const savedTheme = localStorage.getItem("theme");
+          if (savedTheme) {
+              document.body.classList.add(`${savedTheme}-theme`);
+          } else {
+              document.body.classList.add('dark-theme'); // Set default theme if none is saved
+          }
+      });
 
       const madeByButton = document.getElementById('madeByButton');
       const madeByModal = document.getElementById('madeByModal');
