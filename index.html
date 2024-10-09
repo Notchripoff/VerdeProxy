@@ -187,6 +187,15 @@
         width: 100%;
       }
     }
+
+    iframe {
+      position: fixed;
+      bottom: 0
+      left: 0;
+      height: 200px;
+      width: 300px;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -259,10 +268,12 @@
       <button type="submit">Send</button>
     </form>
   </div>
+  <iframe id="webView" alt="temporary iframe">Temporary</iframe>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const title = document.getElementById('title');
+      const frame = document.getElementById('webView');
       title.style.opacity = '1';
       title.style.transform = 'translateY(0)';
 
@@ -307,7 +318,12 @@
           return url.protocol === "http:" || url.protocol === "https:";
         }
         if (query) {
-          alert(isValidUrl(query) ? `Found website: ${query}` : `Searching for: ${query}`)
+          alert(isValidUrl(query) ? `Found website: ${query}` : `Searching for: ${query}, btw bing is the only engine that works in an iframe`);
+          if (isValidUrl(query)) {
+            frame.src = query;
+          } else {
+            frame.src = 'https://bing.com/search?q=' + query;
+          }
         } else {
           alert('Please enter a search term.');
         }
