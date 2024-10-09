@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verde Proxy</title>
+  <link rel="icon" type="image/x-icon" href="favicon.png">
   <style>
     body {
       background-color: #181818;
@@ -196,6 +197,7 @@
       width: 300px;
       border: none;
       background: #ffffff22;
+      z-index: 1001;
     }
   </style>
 </head>
@@ -268,8 +270,8 @@
       <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
       <button type="submit">Send</button>
     </form>
+    <iframe id="webView" alt="temporary iframe">Temporary</iframe>
   </div>
-  <iframe id="webView" alt="temporary iframe">Temporary</iframe>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
