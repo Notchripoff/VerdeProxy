@@ -382,7 +382,7 @@
           return url.protocol === "http:" || url.protocol === "https:";
         }
         if (query) {
-          alert(isValidUrl(query) ? `Found website: ${query}` : `Searching for: ${query}, btw bing is the only engine that works in an iframe`);
+          // alert(isValidUrl(query) ? `Found website: ${query}` : `Searching for: ${query}, btw bing is the only engine that works in an iframe`);
           if (isValidUrl(query)) {
             frame.src = query;
           } else {
