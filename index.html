@@ -13,6 +13,7 @@
       padding: 0;
       overflow: hidden;
       transition: background-color 0.3s, color 0.3s;
+      cursor: url('cursor.svg'), default;
     }
 
     .light-theme {
@@ -172,21 +173,6 @@
       transform: translateY(0);
     }
 
-    .crosshair {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      border: 2px solid #61ce70;
-      border-radius: 50%;
-      pointer-events: none;
-      transition: transform 0.1s ease, background-color 0.3s ease;
-      transform: translate(-50%, -50%);
-    }
-
-    .crosshair:hover {
-      background-color: rgba(97, 206, 112, 0.5);
-    }
-
     @media (max-width: 600px) {
       h1 {
         font-size: 3em;
@@ -274,8 +260,6 @@
     </form>
   </div>
 
-  <div class="crosshair" id="crosshair"></div>
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const title = document.getElementById('title');
@@ -334,12 +318,6 @@
         e.preventDefault();
         alert('Your message has been sent!');
         contactForm.reset();
-      });
-
-      const crosshair = document.getElementById('crosshair');
-      document.addEventListener('mousemove', (e) => {
-        crosshair.style.left = `${e.clientX}px`;
-        crosshair.style.top = `${e.clientY}px`;
       });
     });
   </script>
