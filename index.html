@@ -312,8 +312,18 @@
 
       searchButtonAction.addEventListener('click', () => {
         const query = searchInput.value.trim();
+        function isValidUrl(string) {
+          let url;
+          
+          try {
+            url = new URL(string);
+          } catch (_) {
+            return false;  
+          }
+          return url.protocol === "http:" || url.protocol === "https:";
+        }
         if (query) {
-          alert(`Searching for: ${query}`);
+          alert(isValidUrl(query) ? `Found website: ${query}` : `Searching for: ${query}`)
         } else {
           alert('Please enter a search term.');
         }
