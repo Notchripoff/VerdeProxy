@@ -190,13 +190,13 @@
     }
 
     iframe {
-      position: fixed;
-      bottom: 0
+      position: absolute;
+      top: 0
       left: 0;
       height: 200px;
       width: 300px;
       border: none;
-      background: #ffffff22;
+      background: #445599;
       z-index: 1001;
     }
   </style>
@@ -270,7 +270,7 @@
       <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
       <button type="submit">Send</button>
     </form>
-    <iframe id="webView" alt="temporary iframe">Temporary</iframe>
+    <iframe src="" id="webView" alt="temporary iframe">Temporary</iframe>
   </div>
 
   <script>
