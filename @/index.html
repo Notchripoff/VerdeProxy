@@ -1,15 +1,26 @@
-<style>
-  body {
-    margin: 0;
-    background: #181818;
-  }
-  iframe {
-    height: 100vh;
-    width: 100vw;
-    border: none;
-  }
-</style>
-<iframe src="/VerdeProxy/"></iframe>
-<script>
-  
-</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verde</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.png">
+    <style>
+      body {margin: 0; background: #181818;}
+      iframe {height: 100vh; width: 100vw; border: none;}
+    </style>
+  </head>
+  <body>
+    <iframe id="proxy-frame" src=.."/"></iframe>
+    <script>
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+      const externalUrl = getQueryParam('e');
+      if (externalUrl) {
+        document.getElementById('proxy-frame').src = decodeURIComponent(externalUrl);
+      }
+    </script>
+  </body>
+</html>
