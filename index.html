@@ -344,7 +344,7 @@
 
       function switchTheme(theme) {
         const themes = ['light', 'amethyst', 'dark'];
-        const body = document.body;
+        const body = document.documentElement;
     
         // Remove all specified themes
         themes.forEach(t => body.classList.remove(`${t}-theme`));
@@ -360,9 +360,9 @@
       document.addEventListener('DOMContentLoaded', function() {
           var savedTheme = localStorage.getItem("theme");
           if (savedTheme) {
-              document.body.classList.add(`${savedTheme}-theme`);
+              document.documentElement.classList.add(`${savedTheme}-theme`);
           } else {
-              document.body.classList.add('dark-theme');
+              document.documentElement.classList.add('dark-theme');
           }
       });
 
