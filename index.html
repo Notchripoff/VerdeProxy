@@ -342,21 +342,14 @@
         section.classList.add('active');
       });
 
+      // THEMES
       function switchTheme(theme) {
         const themes = ['light', 'amethyst', 'dark'];
         const body = document.documentElement;
-    
-        // Remove all specified themes
         themes.forEach(t => body.classList.remove(`${t}-theme`));
-        
-        // Add the selected theme
         body.classList.add(`${theme}-theme`);
-        
-        // Save the theme to localStorage
         localStorage.setItem("theme", theme);
       }
-      
-      // Apply the theme on page load
       document.addEventListener('DOMContentLoaded', function() {
           var savedTheme = localStorage.getItem("theme");
           if (savedTheme) {
