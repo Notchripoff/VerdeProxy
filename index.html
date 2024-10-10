@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="amethyst-theme">
+<html lang="en" class="dark-theme">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -342,23 +342,6 @@
         section.classList.add('active');
       });
 
-      // THEMES
-      function switchTheme(theme) {
-        const themes = ['light', 'amethyst', 'dark'];
-        const body = document.documentElement;
-        themes.forEach(t => body.classList.remove(`${t}-theme`));
-        body.classList.add(`${theme}-theme`);
-        localStorage.setItem("theme", theme);
-      }
-      document.addEventListener('DOMContentLoaded', function() {
-          var savedTheme = localStorage.getItem("theme");
-          if (savedTheme) {
-              document.documentElement.classList.add(`${savedTheme}-theme`);
-          } else {
-              switchTheme('dark-theme');
-          }
-      });
-
       const madeByButton = document.getElementById('madeByButton');
       const madeByModal = document.getElementById('madeByModal');
       const closeModal = document.getElementById('closeModal');
@@ -410,6 +393,31 @@
         document.getElementById("searchButtonAction").click();
         document.getElementById("searchInput").blur();
       }
+    });
+    // THEMES
+    function switchTheme(theme) {
+        alert("Switching to theme: " + theme); // Debugging line
+        const themes = ['light', 'amethyst', 'dark'];
+        const body = document.documentElement;
+        
+        // Remove previous theme classes
+        themes.forEach(t => body.classList.remove(`${t}-theme`));
+        
+        // Add new theme class
+        body.classList.add(`${theme}-theme`);
+        
+        // Save selected theme to localStorage
+        localStorage.setItem("theme", theme);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+        var savedTheme = localStorage.getItem("theme");
+        
+        if (savedTheme) {
+            document.documentElement.classList.add(`${savedTheme}-theme`);
+        } else {
+            switchTheme('dark'); // Default to 'dark', not 'dark-theme'
+        }
     });
   </script>
 </body>
