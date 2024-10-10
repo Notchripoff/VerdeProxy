@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="amethyst-theme">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,16 @@
   <link rel="icon" type="image/x-icon" href="favicon.png">
   <style>
     html {
+      --bg: #181818;
+      --text: #ffffff;
+      --title: #e0e0e0;
+      --nav-hover: #61ce70;
+      --input: #282828;
+      --input-placeholder: #888888;
+      --input-submit: #424242;
+    }
+
+    .dark-theme {
       --bg: #181818;
       --text: #ffffff;
       --title: #e0e0e0;
@@ -29,8 +39,8 @@
       --text: #ffffff;
       --title: #e0e0e0;
       --nav-hover: #dc5200;
-      --input: #3e0971;
-      --input-submit: #5b0da6;
+      --input: #3e095a;
+      --input-submit: #5b0d84;
     }
     
     body {
@@ -171,7 +181,7 @@
     }
 
     .search button:hover {
-      background-color: #61ce70;
+      background-color: var(--nav-hover);
       transform: scale(1.1);
     }
 
@@ -210,7 +220,7 @@
     }
 
     .close:hover {
-      background-color: #61ce70;
+      background-color: var(--nav-hover);
     }
 
     .info-section {
@@ -331,7 +341,7 @@
       });
 
       function switchTheme(theme) {
-        const themes = ['light', 'amethyst', 'dark']; // Include 'dark' here
+        const themes = ['light', 'amethyst', 'dark'];
         const body = document.body;
     
         // Remove all specified themes
@@ -345,12 +355,12 @@
       }
       
       // Apply the theme on page load
-      document.addEventListener('DOMContentLoaded', () => {
-          const savedTheme = localStorage.getItem("theme");
+      document.addEventListener('DOMContentLoaded', function() {
+          var savedTheme = localStorage.getItem("theme");
           if (savedTheme) {
               document.body.classList.add(`${savedTheme}-theme`);
           } else {
-              document.body.classList.add('dark-theme'); // Set default theme if none is saved
+              document.body.classList.add('dark-theme');
           }
       });
 
